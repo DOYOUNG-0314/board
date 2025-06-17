@@ -27,7 +27,14 @@ function Register() {
           <Input.Password />
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit" block>회원가입</Button>
+        <Button 
+            type="primary" 
+            shape="round" 
+            size="large" 
+            htmlType="submit" 
+            block 
+            style={{ backgroundColor: '#4CAF50', borderColor: '#4CAF50' }}
+            >회원가입</Button>
         </Form.Item>
       </Form>
     </div>

@@ -30,7 +30,14 @@ function PostWrite() {
           <Input.TextArea rows={10} />
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit" block>작성하기</Button>
+        <Button 
+          type="primary" 
+          shape="round" 
+          size="large" 
+          htmlType="submit" 
+          block 
+          style={{ backgroundColor: '#4CAF50', borderColor: '#4CAF50' }}
+        >작성하기</Button>
         </Form.Item>
       </Form>
     </div>

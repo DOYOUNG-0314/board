@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { Card } from 'antd';
+import { Card, Row, Col } from 'antd';
 
 function PostList() {
   const [posts, setPosts] = useState([]);
@@ -13,19 +13,36 @@ function PostList() {
   }, []);
 
   return (
-    <div style={{ maxWidth: 800, margin: '0 auto', marginTop: '50px' }}>
-      <h2>게시판</h2>
-      {posts.map(post => (
-        <Link key={post.id} to={`/posts/${post.id}`}>
-          <Card 
-            title={post.title} 
-            extra={`작성자: ${post.User.username}`}  // ✅ 작성자 표시
-            style={{ marginBottom: '20px' }}
-          >
-            <p>{post.content.substring(0, 100)}...</p>
-          </Card>
-        </Link>
-      ))}
+    <div style={{ maxWidth: 1200, margin: '0 auto', marginTop: '50px' }}>
+      <h2 style={{ textAlign: 'center', marginBottom: '30px' }}>📌 게시판</h2>
+
+      <Row gutter={[24, 24]}>
+        {posts.map(post => (
+          <Col key={post.id} xs={24} sm={12} md={8}>
+            <Link to={`/posts/${post.id}`} style={{ textDecoration: 'none' }}>
+              <Card
+                title={post.title}
+                bordered={false}
+                hoverable
+                style={{
+                  height: '250px',
+                  backgroundColor: '#fefefe',
+                  boxShadow: '0 6px 20px rgba(0,0,0,0.15)',
+                  borderRadius: '15px',
+                  transition: '0.3s',
+                  overflow: 'hidden'
+                }}
+                bodyStyle={{ padding: '20px' }}
+              >
+                <p style={{ color: '#333', fontSize: '14px', marginBottom: '20px' }}>
+                  {post.content.substring(0, 80)}...
+                </p>
+                <p style={{ fontSize: '12px', color: '#888' }}>작성자: {post.User?.username}</p>
+              </Card>
+            </Link>
+          </Col>
+        ))}
+      </Row>
     </div>
   );
 }

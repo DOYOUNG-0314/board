@@ -31,7 +31,15 @@ function Login({ setUser, setIsLoggedIn }) {
   };
 
   return (
-    <div style={{ maxWidth: 400, margin: '0 auto', marginTop: '100px' }}>
+    <div style={{ 
+      maxWidth: 400, 
+      margin: '0 auto', 
+      marginTop: '100px',
+      padding: 30, 
+      border: '1px solid #ddd', 
+      borderRadius: 10, 
+      boxShadow: '0 4px 12px rgba(0,0,0,0.1)' 
+    }}>
       <h2>로그인</h2>
       <Form layout="vertical" onFinish={onFinish}>
         <Form.Item label="아이디" name="username" rules={[{ required: true, message: '아이디를 입력하세요' }]}>
@@ -41,7 +49,14 @@ function Login({ setUser, setIsLoggedIn }) {
           <Input.Password />
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit" block>로그인</Button>
+        <Button 
+          type="primary" 
+          shape="round" 
+          size="large" 
+          htmlType="submit" 
+          block 
+          style={{ backgroundColor: '#4CAF50', borderColor: '#4CAF50' }}
+                >로그인</Button>
         </Form.Item>
       </Form>
     </div>
