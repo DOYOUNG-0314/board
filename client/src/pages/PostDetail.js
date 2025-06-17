@@ -8,7 +8,7 @@ function PostDetail() {
   const [post, setPost] = useState(null);
   const navigate = useNavigate();
 
-  const currentUser = localStorage.getItem('username');  // ✅ 현재 로그인한 사용자 이름 불러오기
+  const currentUser = localStorage.getItem('username');  
 
   useEffect(() => {
     axios.get(`http://localhost:5001/posts/${id}`)
@@ -34,7 +34,22 @@ function PostDetail() {
 
   return (
     <div style={{ maxWidth: 800, margin: '0 auto', marginTop: '50px' }}>
-      <Card title={post.title} extra={`작성자: ${post.User.username}`}>
+      <Card title={post.title}   style={{
+    padding: '30px',
+    fontSize: '18px',
+    borderRadius: '10px',
+    boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+    backgroundColor: '#fff',
+    width: '50vw'
+    
+  }} extra={`작성자: ${post.User.username}` }>
+    <div style={{ 
+    fontSize: '16px', 
+    lineHeight: '1.8', 
+    minHeight: '300px',
+    whiteSpace: 'pre-wrap' // 줄바꿈 유지
+    
+  }}></div>
         <p>{post.content}</p>
       </Card>
 

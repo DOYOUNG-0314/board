@@ -27,7 +27,7 @@ function PostWrite() {
           <Input />
         </Form.Item>
         <Form.Item label="내용" name="content" rules={[{ required: true, message: '내용을 입력하세요' }]}>
-          <Input.TextArea rows={10} />
+          <Input.TextArea rows={15} style={{ width: '50vw' }} />
         </Form.Item>
         <Form.Item>
         <Button 

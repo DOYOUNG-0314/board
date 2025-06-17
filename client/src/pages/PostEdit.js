@@ -18,7 +18,7 @@ function PostEdit() {
     axios.put(`http://localhost:5001/posts/${id}`, values, {
       headers: { 
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('token')}`  // ✅ 이 부분 추가!
+        'Authorization': `Bearer ${localStorage.getItem('token')}`  
       }
     })
     .then(() => {
@@ -38,17 +38,17 @@ function PostEdit() {
           <Input />
         </Form.Item>
         <Form.Item label="내용" name="content" rules={[{ required: true, message: '내용을 입력하세요' }]}>
-          <Input.TextArea rows={10} />
+          <Input.TextArea rows={15} style={{ width: '50vw' }} />
         </Form.Item>
         <Form.Item>
-        <Button 
+          <Button 
             type="primary" 
             shape="round" 
             size="large" 
             htmlType="submit" 
             block 
             style={{ backgroundColor: '#4CAF50', borderColor: '#4CAF50' }}
-            >
+          >
             수정하기
           </Button>
         </Form.Item>
