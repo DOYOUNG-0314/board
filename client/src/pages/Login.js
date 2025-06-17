@@ -3,7 +3,7 @@ import { Form, Input, Button, message } from 'antd';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-function Login({ setUser }) {
+function Login({ setUser, setIsLoggedIn }) {
   const navigate = useNavigate();
 
   const onFinish = async (values) => {
@@ -13,19 +13,19 @@ function Login({ setUser }) {
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('username', values.username);
       setUser(values.username);
+      setIsLoggedIn(true);
       navigate('/');
+      window.location.reload();  
+      
     } catch (err) {
       const serverMessage = err?.response?.data?.message || '';
 
-      switch (serverMessage) {
-        case '유저가 존재하지 않습니다.':
-          message.error('존재하지 않는 아이디입니다.');
-          break;
-        case '비밀번호가 틀렸습니다.':
-          message.error('비밀번호가 틀렸습니다.');
-          break;
-        default:
-          message.error('로그인 실패');
+      if (serverMessage === '유저가 존재하지 않습니다.') {
+        message.error('존재하지 않는 아이디입니다.');
+      } else if (serverMessage === '비밀번호가 틀렸습니다.') {
+        message.error('비밀번호가 틀렸습니다.');
+      } else {
+        message.error('로그인 실패');
       }
     }
   };

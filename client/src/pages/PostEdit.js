@@ -16,15 +16,18 @@ function PostEdit() {
 
   const onFinish = (values) => {
     axios.put(`http://localhost:5001/posts/${id}`, values, {
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`  // ✅ 이 부분 추가!
+      }
     })
-      .then(() => {
-        message.success('수정 성공');
-        navigate(`/posts/${id}`);
-      })
-      .catch(() => {
-        message.error('수정 실패');
-      });
+    .then(() => {
+      message.success('수정 성공');
+      navigate(`/posts/${id}`);
+    })
+    .catch(() => {
+      message.error('수정 실패');
+    });
   };
 
   return (
